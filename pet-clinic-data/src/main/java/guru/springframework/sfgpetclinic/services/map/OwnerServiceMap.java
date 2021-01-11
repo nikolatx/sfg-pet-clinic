@@ -5,7 +5,7 @@ import guru.springframework.sfgpetclinic.services.CrudService;
 
 import java.util.Set;
 
-public class OwneServiceMap extends AbstractMapService<Owner, Long> implements CrudService<Owner, Long> {
+public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements CrudService<Owner, Long> {
 
     @Override
     public Set<Owner> findAll() {
