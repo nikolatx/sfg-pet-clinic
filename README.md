@@ -1,4 +1,4 @@
-![CircleCI](https://img.shields.io/circleci/build/github/nikolatx/sfg-pet-clinic?style=plastic)
+![CircleCI](https://circleci.com/gh/nikolatx/sfg-pet-clinic.svg?style=svg)
 
 # sfg-pet-clinic
 
