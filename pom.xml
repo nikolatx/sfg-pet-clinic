@@ -59,8 +59,11 @@
             </plugin>
         </plugins>
     </build>
+
     <scm>
-        <developerConnection>scm:git:git@github.com:nikolatx/sfg-pet-clinic.git</developerConnection>
-      <tag>sfg-pet-clinic-0.0.2</tag>
-  </scm>
+        <url>https://github.com/nikolatx/sfg-pet-clinic</url>
+        <connection>scm:git:https://github.com/nikolatx/sfg-pet-clinic.git</connection>
+    </scm>
+
+
 </project>
