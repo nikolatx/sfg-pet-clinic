@@ -31,7 +31,7 @@ class VetSDJpaServiceTest {
     @BeforeEach
     void setUp() {
         returnedVet=Vet.builder().id(1L).build();
-        vetService.save(returnedVet);
+        //vetService.save(returnedVet);
     }
 
     @Test

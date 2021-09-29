@@ -22,7 +22,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class OwnerSDJpaServiceTest {
 
-    public static final String lastName = "Smith";
+    public static final String LAST_NAME = "Smith";
     @Mock
     OwnerRepository ownerRepository;
     @Mock
@@ -42,10 +42,10 @@ class OwnerSDJpaServiceTest {
 
     @Test
     void findByLastName() {
-        Owner returnOwner = Owner.builder().id(1L).lastName(lastName).build();
+        Owner returnOwner = Owner.builder().id(1L).lastName(LAST_NAME).build();
         when(ownerRepository.findByLastName(any())).thenReturn(returnOwner);
-        Owner smith = ownerService.findByLastName(lastName);
-        assertEquals(lastName, smith.getLastName());
+        Owner smith = ownerService.findByLastName(LAST_NAME);
+        assertEquals(LAST_NAME, smith.getLastName());
         verify(ownerRepository).findByLastName(any());
     }
 
