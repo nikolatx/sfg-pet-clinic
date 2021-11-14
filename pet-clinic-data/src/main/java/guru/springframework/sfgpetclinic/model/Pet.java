@@ -43,16 +43,11 @@ public class Pet extends BaseEntity {
         this.petType = petType;
         this.owner = owner;
         this.birthDate = birthDate;
-        if (visits == null || visits.size()>0)
+        if (visits == null)
+            this.visits=new HashSet<>();
+        else if (visits.size()>0)
             this.visits=visits;
-        this.visits = visits;
+
     }
 
-    public Pet(String name, PetType petType, Owner owner, LocalDate birthDate, Set<Visit> visits) {
-        this.name = name;
-        this.petType = petType;
-        this.owner = owner;
-        this.birthDate = birthDate;
-        this.visits = visits;
-    }
 }

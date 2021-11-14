@@ -52,7 +52,7 @@ public class VisitController {
             return VIEWS_VISITS_CREATE_OR_UPDATE_FORM;
         else {
             visitService.save(visit);
-            return "redirect:/owners/{ownerId}";
+            return "redirect:/owners/"+visit.getPet().getOwner().getId();
         }
     }
 
