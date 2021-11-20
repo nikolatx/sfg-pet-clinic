@@ -13,7 +13,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.Collection;
 
@@ -59,7 +58,6 @@ public class PetController {
     }
 
     @PostMapping("/pets/new")
-    @Transactional
     public String processCreationForm(Owner owner, @Valid Pet pet, BindingResult result, Model model) {
         if (StringUtils.hasLength(pet.getName()) && pet.isNew() && owner.getPet(pet.getName(), true) != null)
             result.rejectValue("name", "duplicate", "already exists");
@@ -69,6 +67,7 @@ public class PetController {
             return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
         } else {
             petService.save(pet);
+            ownerService.save(owner);
             return "redirect:/owners/" + owner.getId();
         }
     }
@@ -80,10 +79,9 @@ public class PetController {
     }
 
     @PostMapping("/pets/{petId}/edit")
-    @Transactional
     public String processUpdateForm(Owner owner, @Valid Pet pet, BindingResult result, Model model) {
-        //if (StringUtils.hasLength(pet.getName()) && pet.isNew() && owner.getPet(pet.getName(), true) != null)
-        //    result.rejectValue("name", "duplicate", "already exists");
+        if (StringUtils.hasLength(pet.getName()) && pet.isNew() && owner.getPet(pet.getName(), true) != null)
+            result.rejectValue("name", "duplicate", "already exists");
         if (result.hasErrors()) {
             pet.setOwner(owner);
             model.addAttribute("pet", pet);
