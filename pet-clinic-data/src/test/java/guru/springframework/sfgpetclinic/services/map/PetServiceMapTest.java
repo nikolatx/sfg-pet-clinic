@@ -39,6 +39,18 @@ class PetServiceMapTest {
     }
 
     @Test
+    void deleteByWrongId() {
+        petServiceMap.deleteById(5L);
+        assertEquals(1, petServiceMap.findAll().size());
+    }
+
+    @Test
+    void deleteByNullId() {
+        petServiceMap.deleteById(null);
+        assertEquals(1, petServiceMap.findAll().size());
+    }
+
+    @Test
     void delete() {
         petServiceMap.delete(petServiceMap.findById(petId));
         assertEquals(0, petServiceMap.findAll().size());
