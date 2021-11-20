@@ -73,13 +73,13 @@ public class PetController {
         }
     }
 
-    @GetMapping("/pets/{petId}/update")
+    @GetMapping("/pets/{petId}/edit")
     public String initUpdateForm(Owner owner, Model model, @PathVariable Long petId) {
         model.addAttribute ("pet", petService.findById(petId));
         return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
     }
 
-    @PostMapping("/pets/{petId}/update")
+    @PostMapping("/pets/{petId}/edit")
     @Transactional
     public String processUpdateForm(Owner owner, @Valid Pet pet, BindingResult result, Model model) {
         //if (StringUtils.hasLength(pet.getName()) && pet.isNew() && owner.getPet(pet.getName(), true) != null)

@@ -82,8 +82,8 @@ class PetControllerTest {
     void initUpdateForm() throws Exception {
         when(petTypeService.findAll()).thenReturn(petTypes);
         when(ownerService.findById(anyLong())).thenReturn(owner);
-        when(petService.findById(anyLong())).thenReturn(Pet.builder().id(2L).build());
-        mockMvc.perform(MockMvcRequestBuilders.get("/owners/1/pets/1/update"))
+        when(petService.findById(anyLong())).thenReturn(Pet.builder().id(1L).build());
+        mockMvc.perform(MockMvcRequestBuilders.get("/owners/1/pets/1/edit"))
                 .andExpect(status().isOk())
                 .andExpect(model().attributeExists("types"))
                 .andExpect(model().attributeExists("owner"))
@@ -94,7 +94,7 @@ class PetControllerTest {
     void processUpdateForm() throws Exception {
         when(ownerService.findById(anyLong())).thenReturn(owner);
         when(petTypeService.findAll()).thenReturn(petTypes);
-        mockMvc.perform(MockMvcRequestBuilders.post("/owners/1/pets/1/update"))
+        mockMvc.perform(MockMvcRequestBuilders.post("/owners/1/pets/1/edit"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/owners/1"));
         verify(petService).save(any());
